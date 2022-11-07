@@ -15,7 +15,7 @@ void StartGame();
 void CreateGame();
 void CreateHangman();
 void ShowWord();
-void GetWord();
+string GetWord();
 
 
 bool CheckGuess(char guess) {
@@ -101,7 +101,7 @@ void CreateHangman() {
 
 void CreateGame() {
 
-    word = "cat";
+    word = GetWord();
     wordGuessed = "";
     lives = 6;
     for (int i = 0; i < word.length(); i++) {
@@ -128,9 +128,7 @@ void ShowWord() {
 
 int main()
 {
-    //CreateGame();
-    GetWord();
-
+    CreateGame();
 }
 
 
