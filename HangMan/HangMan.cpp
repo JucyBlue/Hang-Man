@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+
 using namespace std;
 
 string word;
@@ -13,19 +14,23 @@ int lives;
 void StartGame();
 void CreateGame();
 void CreateHangman();
+void ShowWord();
+void GetWord();
 
 
 bool CheckGuess(char guess) {
     cout << "\n\n";
     int index = word.find(guess);
+    cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     if (index == std::string::npos) {
-        cout << "Wrong!\n";
+        cout << "***Wrong***\n";
+        lives--;
         return false;
     }
     else {
         std::string strGuess(1, guess);
         wordGuessed.replace(index, 1, strGuess);
-        cout << "Correct\n";
+        cout << "***Correct***\n";
         return true;
     }
 
@@ -36,26 +41,24 @@ void StartGame() {
 
     std::cout << "Welcome to Hangman!\n";
     cout << "Your word is " << word.length() << " letters long\n";
-    while (word != wordGuessed) {
-        cout << "\nGuess a letter:";
+    while (word != wordGuessed && lives > 0) {
 
         CreateHangman();
-
-        for (int i = 0; i <= wordGuessed.length(); i++) {
-            cout << wordGuessed.at(i);
-        }
-
+        ShowWord();
+        cout << "\n\nGuess a letter:";
         cin >> guess;
         CheckGuess(guess);
-
-        cout << wordGuessed;
     }
+    
+    if (lives <= 0) cout << "\n\nGame Over!!\n\n\nThe word was: ";
+    else cout << "\n\nYou Win!\n\n\nThe word was:";
+    cout << word;
+    cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+            
+        
 
-
-
-
-    std::cin.get();
-    std::cin.get();
+    cin.get();
+    cin.get();
 
 }
 
@@ -93,7 +96,6 @@ void CreateHangman() {
     cout << "    |       \n";
     cout << "____|______  \n";
 
-
 }
      
 
@@ -112,16 +114,30 @@ void CreateGame() {
 
 }
 
+void ShowWord() {
+    cout << "\n";
+    cout << "\nWord: ";
+    for (int i = 0; i < wordGuessed.length(); i++) {
+
+        cout << wordGuessed.at(i) << " ";
+
+    }
+}
+
 
 
 int main()
 {
-    CreateGame();
+    //CreateGame();
+    GetWord();
 
 }
 
 
 
+
+
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
+
 

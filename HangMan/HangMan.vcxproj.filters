@@ -18,5 +18,8 @@
     <ClCompile Include="HangMan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GetWord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
